@@ -1,10 +1,15 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import Button from './button';
+import ButtonComponent, { ButtonProps } from "./ButtonComponent";
 
-describe('Button', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<Button />);
+describe("ButtonComponent", () => {
+  const defaultProps: ButtonProps = {
+    onClick: jest.fn(),
+    variant: "primary",
+  };
+
+  it("should render successfully", () => {
+    const { baseElement } = render(<ButtonComponent {...defaultProps} />);
     expect(baseElement).toBeTruthy();
   });
 });
