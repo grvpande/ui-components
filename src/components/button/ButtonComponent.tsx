@@ -10,12 +10,11 @@ export interface ButtonProps {
 export interface StyledButtonProps extends ButtonProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   buttonConfig: { [key: string]: any };
-  textColor: string;
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
   background-color: ${(props) => props.buttonConfig['background'][props.variant]};
-  color: ${(props) => props.textColor};
+  color: ${(props) => props.buttonConfig['textColor'][props.variant]};
   border-radius: ${props => props.buttonConfig['borderRadius']};
   border: 1px solid ${(props) => props.buttonConfig['background'][props.variant]};
   height: ${props => props.buttonConfig['height']};
@@ -26,7 +25,6 @@ const ButtonComponent: React.FC<ButtonProps> = ({ variant, onClick, children, ..
   const { buttons } = useContext(ThemeContext);
   return (
     <StyledButton
-      textColor="white"
       variant={variant}
       buttonConfig={buttons}
       onClick={onClick}
